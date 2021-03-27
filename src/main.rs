@@ -1,3 +1,5 @@
+mod configuration_manager;
+
 use std::env;
 use std::path::{PathBuf};
 
