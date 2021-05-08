@@ -26,5 +26,13 @@ impl RepoVersion
         self.international_bot_version = international_bot_version;
     }
 
+    pub fn get_repo_version(self) -> String {
+        return self.repo_version.clone();
+    }
+
+    pub fn set_repo_version(&mut self,repo_version: String) {
+        self.repo_version = repo_version;
+    }
+
 
 }
