@@ -26,6 +26,7 @@ impl RepoVersion
         self.international_bot_version = international_bot_version;
     }
 
+
     pub fn get_repo_version(self) -> String {
         return self.repo_version.clone();
     }
@@ -35,4 +36,20 @@ impl RepoVersion
     }
 
 
+    pub fn get_build_type(self) -> String {
+        return self.build_type.clone();
+    }
+
+    pub fn set_build_type(&mut self,build_type: String) {
+        self.build_type = build_type;
+    }
+
+
+    pub fn get_panel_version(self) -> String {
+        return self.panel_version.clone();
+    }
+
+    pub fn set_panel_version(&mut self,panel_version: String) {
+        self.panel_version = panel_version;
+    }
 }
