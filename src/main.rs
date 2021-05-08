@@ -38,7 +38,7 @@ async fn main() -> std::io::Result<()>
                     // TODO write Internationalbotversion and exit Program
                     println!("--Version");
                 }
-            v =>
+            _v =>
                 {
                     // TODO write Internationalbotversion and exit Program
                     println!("--v");
