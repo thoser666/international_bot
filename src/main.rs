@@ -1,9 +1,20 @@
-mod configuration_manager;
+//mod configuration_manager;
+//mod repoversion;
+
+mod repoversion;
 
 use std::env;
 use std::path::{PathBuf};
+use actix_web::{web, App, HttpRequest, HttpServer, Responder};
 
-fn main()
+
+async fn greet(req: HttpRequest) -> impl Responder {
+    let name = req.match_info().get("name").unwrap_or("World");
+    format!("Hello {}!", &name)
+}
+
+#[actix_web::main]
+async fn main() -> std::io::Result<()>
 {
     let path = get_working_dir();
     println!("The working directory is: {:?}" , path);
@@ -35,7 +46,17 @@ fn main()
         }
 
     }
-    println!("{:?}", _args);
+
+    HttpServer::new(|| {
+        App::new()
+            .route("/", web::get().to(greet))
+            .route("/{name}", web::get().to(greet))
+    })
+        .bind(("127.0.0.1", 8080))?
+        .run()
+        .await
+
+//    println!("{:?}", _args);
 
 }
 
