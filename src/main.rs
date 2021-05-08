@@ -35,12 +35,12 @@ async fn main() -> std::io::Result<()>
         {
             version =>
                 {
-                    // TODO write Phantombotversion and exit Program
+                    // TODO write Internationalbotversion and exit Program
                     println!("--Version");
                 }
             v =>
                 {
-                    // TODO write Phantombotversion and exit Program
+                    // TODO write Internationalbotversion and exit Program
                     println!("--v");
                 }
         }
