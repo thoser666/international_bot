@@ -26,11 +26,44 @@ pub struct  ConfigurationManager
     PROP_YTAUTH_RO : String,
     PROP_API_OAUTH : String,
     PROP_SILENTSCRIPTSLOAD : String
-
-
-
-
 }
+
+impl ConfigurationManager
+{
+    pub fn new() -> Self
+    {
+        ConfigurationManager {
+            BOTLOGIN_TXT_LOCATION: "./config/botlogin.txt".to_string(),
+            PANEL_STANDARD_USER: "panel".to_string(),
+            PANEL_STANDARD_PASSWORD: "panel".to_string(),
+            OUAUTH_PREFIX: "oauth:".to_string(),
+            PROP_BASEPORT: "baseport".to_string(),
+            PROP_USEHTTPS: "usehttps".to_string(),
+            PROP_WEBENABLE: "webenable".to_string(),
+            PROP_MSGLIMIT30: "msglimit30".to_string(),
+            PROP_MUSICENABLE: "musicenable".to_string(),
+            PROP_WHISPERLIMIT60: "whisperlimit60".to_string(),
+            PROP_OAUTH: "oauth".to_string(),
+            PROP_CHANNEL: "channel".to_string(),
+            PROP_OWNER: "owner".to_string(),
+            PROP_USER: "user".to_string(),
+            PROP_DEBUGON: "debugon".to_string(),
+            PROP_DEBUGLOG: "debuglog".to_string(),
+            PROP_RELOADSCRIPTS: "reloadscripts".to_string(),
+            PROP_RHINODEBUGGER: "rhinodebugger".to_string(),
+            PROP_WEBAUTH: "webauth".to_string(),
+            PROP_WEBAUTH_RO: "webauthro".to_string(),
+            PROP_PANEL_USER: "paneluser".to_string(),
+            PROP_PANEL_PASSWORD: "panelpassword".to_string(),
+            PROP_YTAUTH: "ytauth".to_string(),
+            PROP_YTAUTH_RO: "ytauthro".to_string(),
+            PROP_API_OAUTH: "apioauth".to_string(),
+            PROP_SILENTSCRIPTSLOAD: "silentscriptsload".to_string()
+        }
+    }
+}
+
+
 //    pub fn get_configuration()
 //    {
         // let _botlogin_txt_location = String::from("./config/botlogin.txt");
