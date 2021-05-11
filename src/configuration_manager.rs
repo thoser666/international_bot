@@ -64,7 +64,13 @@ impl ConfigurationManager
 
     pub fn get_configuration()
     {
-        let required_properties = ["prop_oauth", "prop_channel", "prop_owner", "prop_user"];
+        enum required_properties
+        {
+            prop_oauth,
+            prop_channel,
+            prop_owner,
+            prop_user
+        };
         let required_properties_error_message : String;
     }
 }
