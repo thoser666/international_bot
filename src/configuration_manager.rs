@@ -61,6 +61,11 @@ impl ConfigurationManager
             prop_silentscriptsload: "silentscriptsload".to_string()
         }
     }
+
+    pub fn get_configuration()
+    {
+
+    }
 }
 
 
