@@ -72,6 +72,11 @@ impl ConfigurationManager
             PropUser
         }
         let required_properties_error_message : String;
+
+        /*
+         * Configure Properties
+         */
+//        let startProperties = CaselessProperties::new();
     }
 }
 

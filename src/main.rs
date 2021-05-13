@@ -3,6 +3,7 @@
 
 mod repoversion;
 mod configuration_manager;
+mod caseless_properties;
 
 use std::env;
 use std::path::{PathBuf};
