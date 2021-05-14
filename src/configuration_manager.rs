@@ -1,3 +1,5 @@
+use crate::caseless_properties::CaselessProperties;
+
 pub struct  ConfigurationManager
 {
     botlogin_txt_location : String,
@@ -73,10 +75,14 @@ impl ConfigurationManager
         }
         let required_properties_error_message : String;
 
-        /*
-         * Configure Properties
-         */
-//        let startProperties = CaselessProperties::new();
+        // Configure Properties
+        let start_properties = CaselessProperties::new();
+
+        // Indicates that botlogin.txt should be created or updated
+        let changed :bool = false;
+
+        // is this a fresh setup
+        let new_setup: bool = false;
     }
 }
 
