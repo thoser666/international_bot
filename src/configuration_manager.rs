@@ -1,4 +1,6 @@
 use crate::caseless_properties::CaselessProperties;
+use std::fs::File;
+use std::io::BufReader;
 
 pub struct  ConfigurationManager
 {
@@ -64,7 +66,7 @@ impl ConfigurationManager
         }
     }
 
-    pub fn get_configuration()
+    pub fn get_configuration(&self)
     {
         enum RequiredProperties
         {
@@ -83,7 +85,14 @@ impl ConfigurationManager
 
         // is this a fresh setup
         let new_setup: bool = false;
-    }
+
+        // loading the config file or (if not there) create a new one with default values
+        let dateiname = &self.botlogin_txt_location;
+        let file = File::open(dateiname);
+        // let mut buf_reader = BufReader::new(file);
+        // let mut contents = String::new();
+        // buf_reader.read_to_string(&mut contents);
+        }
 }
 
 
