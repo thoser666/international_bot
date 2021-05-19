@@ -8,6 +8,7 @@ mod caseless_properties;
 use std::env;
 use std::path::{PathBuf};
 use actix_web::{web, App, HttpRequest, HttpServer, Responder};
+use crate::configuration_manager::ConfigurationManager;
 
 
 async fn greet(req: HttpRequest) -> impl Responder {
@@ -48,6 +49,9 @@ async fn main() -> std::io::Result<()>
         }
 
     }
+
+    let config =  ConfigurationManager::new();
+    let startProperties = config.get_configuration();
 
     HttpServer::new(|| {
         App::new()
