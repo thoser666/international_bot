@@ -2,9 +2,9 @@ name: Rust
 
 on:
   push:
-    branches: [ master ]
+    branches: [ feature/loadStartProperties ]
   pull_request:
-    branches: [ master ]
+    types: [opened, synchronize, reopened]
 
 env:
   CARGO_TERM_COLOR: always
