@@ -59,7 +59,7 @@ async fn main() -> std::io::Result<()>
     }
 
     let config =  ConfigurationManager::new();
-    let startProperties = config.get_configuration();
+    let start_properties = config.get_configuration();
 
     HttpServer::new(|| {
         App::new()
