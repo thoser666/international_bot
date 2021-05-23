@@ -24,30 +24,38 @@ async fn main() -> std::io::Result<()>
 
     // read command-line parameter
     let _args: Vec<String> = env::args().collect();
-    let arg = &_args[1];
+
+    // how many args?
+    let args: Vec<String> = env::args().collect();
+
+
 
 
     // Constants
     let version = "--version";
     let v = "--v";
 
-
-    if !_args.is_empty()
+    // if we have commandline args
+    if args.len() > 1
     {
-        match arg.to_string()
-        {
-            version =>
-                {
-                    // TODO write Internationalbotversion and exit Program
-                    println!("--Version");
-                }
-            _v =>
-                {
-                    // TODO write Internationalbotversion and exit Program
-                    println!("--v");
-                }
-        }
+        let arg = &_args[1];
 
+        if !_args.is_empty()
+        {
+            match arg.to_string()
+            {
+                version =>
+                    {
+                        // TODO write Internationalbotversion and exit Program
+                        println!("--Version");
+                    }
+                _v =>
+                    {
+                        // TODO write Internationalbotversion and exit Program
+                        println!("--v");
+                    }
+            }
+        }
     }
 
     let config =  ConfigurationManager::new();
