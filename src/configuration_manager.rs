@@ -1,7 +1,10 @@
 use crate::caseless_properties::CaselessProperties;
 use std::fs::File;
-use std::io::ErrorKind;
+use std::io::{ErrorKind, Read};
 use std::io::Write;
+use std::fs;
+use std::collections::HashMap;
+use std::path::{PathBuf, Path};
 
 pub struct  ConfigurationManager
 {
@@ -90,22 +93,45 @@ impl ConfigurationManager
 
         // loading the config file or (if not there) create a new one with default values
         let dateiname = &self.botlogin_txt_location;
+  //      let result = HashMap::new();
+        let result = String::new();
+
+        let fileExists = Path::new(dateiname).exists();
+
+        //config file exists
+        if fileExists
+        {
+            println!("Test");
+        }
+        else
+        {
+            // create config file
+            let slice = &dateiname[..8];
+            fs::create_dir(slice);
+            let file = File::create(dateiname);
+        }
+
+//        let datei = PathBuf::from(dateiname);
         let file = File::open(dateiname);
 
-        // check if something goes wrong
-        let f = match file {
-            Ok(file) => file,
-            Err(error) => match error.kind() {
-                ErrorKind::NotFound => match File::create(dateiname)
-                {
-                    Ok(fc) => fc,
-                    Err(e) => panic!("Problem creating the file: {:?}", e),
-                },
-                other_error => {
-                    panic!("Problem opening the file: {:?}", other_error)
-                }
-            },
-        };
+
+//         // check if something goes wrong
+//         let f = match file {
+//             Ok(file) => file,
+//             Err(error) => match error.kind() {
+//                 ErrorKind::NotFound => match File::create(dateiname)
+//                 {
+//                     Ok(fc) => fc,
+//                     Err(e) => {
+//                         fs::create_dir("/config");
+// //                        panic!("Problem creating the file: {:?}", e)
+//                     },
+//                 },
+//                 other_error => {
+//                     panic!("Problem opening the file: {:?}", other_error)
+//                 }
+//             },
+//         };
 
         // Config einlesen
 
