@@ -139,7 +139,7 @@ impl ConfigurationManager
 
              for (key, value) in conf.iter()
              {
-                 config = key.to_string();
+                 config += key;
                  config += ": ";
                  config += value;
                  config += "\n";
