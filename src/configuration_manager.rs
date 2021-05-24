@@ -1,6 +1,7 @@
 use crate::caseless_properties::CaselessProperties;
 use std::fs::File;
 use std::io::ErrorKind;
+use std::io::Write;
 
 pub struct  ConfigurationManager
 {
@@ -77,6 +78,7 @@ impl ConfigurationManager
         }
         let required_properties_error_message : String;
 
+
         // Configure Properties
         let start_properties = CaselessProperties::new();
 
@@ -89,21 +91,26 @@ impl ConfigurationManager
         // loading the config file or (if not there) create a new one with default values
         let dateiname = &self.botlogin_txt_location;
         let file = File::open(dateiname);
-        let file = File::open(dateiname).unwrap_or_else(|error|
-            {
-            if error.kind() == ErrorKind::NotFound
-            {
-                File::create(dateiname).unwrap_or_else(|error|
-                    {
-                    panic!("Problem creating the file: {:?}", error);
-                })
-            }
-            else
-            {
-                panic!("Problem opening the file: {:?}", error);
-            }
-        });
-        // let mut contents = String::new();
+
+        // check if something goes wrong
+        let f = match file {
+            Ok(file) => file,
+            Err(error) => match error.kind() {
+                ErrorKind::NotFound => match File::create(dateiname)
+                {
+                    Ok(fc) => fc,
+                    Err(e) => panic!("Problem creating the file: {:?}", e),
+                },
+                other_error => {
+                    panic!("Problem opening the file: {:?}", other_error)
+                }
+            },
+        };
+
+        // Config einlesen
+
+
+         let mut contents = String::new();
         // buf_reader.read_to_string(&mut contents);
         }
 }
