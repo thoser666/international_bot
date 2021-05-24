@@ -5,6 +5,8 @@ use std::io::Write;
 use std::fs;
 use std::collections::HashMap;
 use std::path::{PathBuf, Path};
+use std::io::prelude::*;
+use std::ops::Add;
 
 pub struct  ConfigurationManager
 {
@@ -81,6 +83,8 @@ impl ConfigurationManager
         }
         let required_properties_error_message : String;
 
+        let mut conf = HashMap::new();
+
 
         // Configure Properties
         let start_properties = CaselessProperties::new();
@@ -93,8 +97,8 @@ impl ConfigurationManager
 
         // loading the config file or (if not there) create a new one with default values
         let dateiname = &self.botlogin_txt_location;
-  //      let result = HashMap::new();
-        let result = String::new();
+        let result: HashMap<String, String> = HashMap::new();
+        let mut config = String::new();     // configdaten
 
         let fileExists = Path::new(dateiname).exists();
 
@@ -105,33 +109,31 @@ impl ConfigurationManager
         }
         else
         {
+
             // create config file
             let slice = &dateiname[..8];
             fs::create_dir(slice);
-            let file = File::create(dateiname);
+            let mut file = File::create(dateiname);
+
+            conf.insert(&self.prop_webenable, "true");
+
+
+             for (key, value) in conf.iter()
+             {
+                 config = key.to_string();
+                 config += ": ";
+                 config += value;
+                 config += "\n";
+
+
+             }
+            fs::write(dateiname,config);
+
+
+
+
         }
 
-//        let datei = PathBuf::from(dateiname);
-        let file = File::open(dateiname);
-
-
-//         // check if something goes wrong
-//         let f = match file {
-//             Ok(file) => file,
-//             Err(error) => match error.kind() {
-//                 ErrorKind::NotFound => match File::create(dateiname)
-//                 {
-//                     Ok(fc) => fc,
-//                     Err(e) => {
-//                         fs::create_dir("/config");
-// //                        panic!("Problem creating the file: {:?}", e)
-//                     },
-//                 },
-//                 other_error => {
-//                     panic!("Problem opening the file: {:?}", other_error)
-//                 }
-//             },
-//         };
 
         // Config einlesen
 
