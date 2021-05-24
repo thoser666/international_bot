@@ -125,7 +125,7 @@ impl ConfigurationManager
             conf.insert(&self.prop_panel_password, "");
             conf.insert(&self.prop_usehttps, "true");
             conf.insert(&self.prop_oauth, "");
-            conf.insert(&self.prop_whisperlimit_60 "60.0");
+            conf.insert(&self.prop_whisperlimit_60, "60.0");
             conf.insert(&self.prop_owner, "");
             conf.insert(&self.prop_baseport, "26000");
             conf.insert(&self.prop_msglimit_30,"19.0");
