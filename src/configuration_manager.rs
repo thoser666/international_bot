@@ -85,6 +85,25 @@ impl ConfigurationManager
 
         let mut conf = HashMap::new();
 
+        // defaultvalues
+        conf.insert(&self.prop_musicenable, "true");
+        conf.insert(&self.prop_channel, "");
+        conf.insert(&self.prop_webenable, "true");
+        conf.insert(&self.prop_ytauth, "");
+        conf.insert(&self.prop_webauth, "");
+        conf.insert(&self.prop_webauth_ro, "");
+        conf.insert(&self.prop_panel_password, "");
+        conf.insert(&self.prop_usehttps, "true");
+        conf.insert(&self.prop_oauth, "");
+        conf.insert(&self.prop_whisperlimit_60, "60.0");
+        conf.insert(&self.prop_owner, "");
+        conf.insert(&self.prop_baseport, "26000");
+        conf.insert(&self.prop_msglimit_30,"19.0");
+        conf.insert(&self.prop_ytauth_ro, "");
+        conf.insert(&self.prop_panel_user, "");
+        conf.insert(&self.prop_user, "");
+        conf.insert(&self.prop_api_oauth, "");
+
 
         // Configure Properties
         let start_properties = CaselessProperties::new();
@@ -114,27 +133,6 @@ impl ConfigurationManager
             let slice = &dateiname[..8];
             fs::create_dir(slice);
             let mut file = File::create(dateiname);
-
-            // defaultvalues
-            conf.insert(&self.prop_musicenable, "true");
-            conf.insert(&self.prop_channel, "");
-            conf.insert(&self.prop_webenable, "true");
-            conf.insert(&self.prop_ytauth, "");
-            conf.insert(&self.prop_webauth, "");
-            conf.insert(&self.prop_webauth_ro, "");
-            conf.insert(&self.prop_panel_password, "");
-            conf.insert(&self.prop_usehttps, "true");
-            conf.insert(&self.prop_oauth, "");
-            conf.insert(&self.prop_whisperlimit_60, "60.0");
-            conf.insert(&self.prop_owner, "");
-            conf.insert(&self.prop_baseport, "26000");
-            conf.insert(&self.prop_msglimit_30,"19.0");
-            conf.insert(&self.prop_ytauth_ro, "");
-            conf.insert(&self.prop_panel_user, "");
-            conf.insert(&self.prop_user, "");
-            conf.insert(&self.prop_api_oauth, "");
-
-
 
 
              for (key, value) in conf.iter()
