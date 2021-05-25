@@ -1,6 +1,6 @@
 use crate::caseless_properties::CaselessProperties;
 use std::fs::File;
-use std::io::{ErrorKind, Read};
+use std::io::{BufRead, BufReader};
 use std::io::Write;
 use std::fs;
 use std::collections::HashMap;
@@ -125,7 +125,12 @@ impl ConfigurationManager
         if fileExists
         {
             println!("Test");
-        }
+            let mut file = File::open(dateiname).unwrap();
+            let reader = BufReader::new(file);
+
+            for line in reader.lines() {
+                println!("{:?}", line);
+            }        }
         else
         {
 
@@ -151,8 +156,7 @@ impl ConfigurationManager
 
         }
 
-         let mut contents = String::new();
-        // buf_reader.read_to_string(&mut contents);
+
         }
 }
 
