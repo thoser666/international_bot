@@ -259,10 +259,6 @@ impl ConfigurationManager
 
              }
             fs::write(dateiname,config);
-
-
-
-
         }
 
 
