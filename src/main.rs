@@ -19,6 +19,16 @@ async fn greet(req: HttpRequest) -> impl Responder {
 #[actix_web::main]
 async fn main() -> std::io::Result<()>
 {
+    let _guard = sentry::init(("https://b8679368c7a444a6b5c1acb823fb4f8d@o749414.ingest.sentry.io/5791371", sentry::ClientOptions {
+        release: sentry::release_name!(),
+        ..Default::default()
+    }));
+
+    // Sentry will capture this
+    panic!("Everything is on fire!");
+
+
+
     let path = get_working_dir();
     println!("The working directory is: {:?}" , path);
 
