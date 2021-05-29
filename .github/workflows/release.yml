@@ -1,13 +1,14 @@
+name: Bump version
 on:
   push:
-    branches: [release]
+    branches:
+      - release
 jobs:
-  prerelease:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: scaffoldly/bump-version-action@release.*
+      - uses: actions/checkout@release.*
+      - name: Bump version and push tag
+        uses: hennejg/github-tag-action@v4.1.jh1
         with:
-          action: prerelease
-          version-file: package.json
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
