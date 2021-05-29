@@ -262,7 +262,7 @@ impl ConfigurationManager
         }
 
 
-        }
+    }
 }
 
 
