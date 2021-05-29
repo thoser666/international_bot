@@ -25,7 +25,7 @@ async fn main() -> std::io::Result<()>
     }));
 
     // Sentry will capture this
-    panic!("Everything is on fire!");
+//    panic!("Everything is on fire!");
 
 
 
