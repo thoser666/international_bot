@@ -1,8 +1,8 @@
 name: ReleaseWorkflow
 
 on:
-  release:
-    types: [published, prereleased]
+#  release:
+#    types: [published, prereleased]
   push:
     tags:
       - '*'
