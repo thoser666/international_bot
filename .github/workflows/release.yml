@@ -20,9 +20,9 @@ jobs:
             CHANGELOG_FILE: "CHANGELOG.md"
             ALLOW_EMPTY_CHANGELOG: "false"
             ALLOW_TAG_PREFIX: "true"
-          with:
-          args: |
-              build/*-amd64.zip
+        with:
+            args: |
+                build/*-amd64.zip
       - name: Checkout code
         uses: actions/checkout@master
       - name: Create a Sentry.io release
