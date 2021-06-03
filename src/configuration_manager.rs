@@ -130,7 +130,7 @@ impl ConfigurationManager
 
 
             for line in reader.lines() {
-                let mut tmp = line.unwrap();
+                let tmp = line.unwrap();
                 let prop = tmp.split(":");
                 let mut vec: Vec<&str> = prop.collect();
 
