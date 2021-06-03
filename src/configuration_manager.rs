@@ -117,10 +117,10 @@ impl ConfigurationManager
         let result: HashMap<String, String> = HashMap::new();
         let mut config = String::new();     // configdaten
 
-        let fileExists = Path::new(dateiname).exists();
+        let file_exists = Path::new(dateiname).exists();
 
         //config file exists
-        if fileExists
+        if file_exists
         {
             let file = File::open(dateiname).unwrap();
             let reader = BufReader::new(file);
