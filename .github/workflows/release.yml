@@ -5,7 +5,7 @@ on:
 #    types: [published, prereleased]
   push:
     tags:
-      - '*'
+      - 'v*'
 
 jobs:
   createSentryRelease:
