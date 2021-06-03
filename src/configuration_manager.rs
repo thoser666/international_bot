@@ -131,7 +131,7 @@ impl ConfigurationManager
 
             for line in reader.lines() {
                 let mut tmp = line.unwrap();
-                let mut prop = tmp.split(":");
+                let prop = tmp.split(":");
                 let mut vec: Vec<&str> = prop.collect();
 
                  if vec[0].to_string() == myDefaults.prop_api_oauth.to_string()

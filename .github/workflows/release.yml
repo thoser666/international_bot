@@ -2,25 +2,27 @@ name: ReleaseWorkflow
 
 on:
   release:
-#    types: [published, prereleased]
-    types: [tagged]
-
+    types: [published, prereleased]
+  push:
+    tags:
+      - '*'
 
 jobs:
   createSentryRelease:
     runs-on: ubuntu-latest
     steps:
-      - name: release
-          uses: actions/create-release@v1
-          id: create_release
-          with:
-            draft: true
-            prerelease: true
-            release_name: ${{ github.ref }}
-            tag_name: ${{ github.ref }}
-            body_path: CHANGELOG.md
+      - name: Release
+          uses: docker://antonyurchenko/git-release:latest
           env:
-            GITHUB_TOKEN: ${{ github.token }}
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            DRAFT_RELEASE: "false"
+            PRE_RELEASE: "false"
+            CHANGELOG_FILE: "CHANGELOG.md"
+            ALLOW_EMPTY_CHANGELOG: "false"
+            ALLOW_TAG_PREFIX: "true"
+          with:
+            args: |
+              build/*-amd64.zip
       - name: Checkout code
         uses: actions/checkout@master
       - name: Create a Sentry.io release
