@@ -12,8 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Release
-          uses: docker://antonyurchenko/git-release@v3.5.0
-          env:
+        uses: docker://antonyurchenko/git-release:latest
+        env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             DRAFT_RELEASE: "false"
             PRE_RELEASE: "false"
@@ -21,7 +21,7 @@ jobs:
             ALLOW_EMPTY_CHANGELOG: "false"
             ALLOW_TAG_PREFIX: "true"
           with:
-            args: |
+          args: |
               build/*-amd64.zip
       - name: Checkout code
         uses: actions/checkout@master
