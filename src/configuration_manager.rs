@@ -1,10 +1,9 @@
 use crate::caseless_properties::CaselessProperties;
 use std::fs::File;
 use std::io::{BufRead, BufReader};
-use std::io::Write;
 use std::fs;
 use std::collections::HashMap;
-use std::path::{PathBuf, Path};
+use std::path::{Path};
 use std::io::prelude::*;
 use std::ops::Add;
 
@@ -125,7 +124,7 @@ impl ConfigurationManager
         //config file exists
         if fileExists
         {
-            let mut file = File::open(dateiname).unwrap();
+            let file = File::open(dateiname).unwrap();
             let reader = BufReader::new(file);
 
             // doing configuration
