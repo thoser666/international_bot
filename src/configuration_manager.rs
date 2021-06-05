@@ -134,103 +134,103 @@ impl ConfigurationManager
                 let prop = tmp.split(":");
                 let vec: Vec<&str> = prop.collect();
 
-                 if vec[0].to_string() == my_Defaults.prop_api_oauth.to_string()
+                 if vec[0].to_string() == my_defaults.prop_api_oauth.to_string()
                  {
-                     my_Defaults.prop_api_oauth = vec[1].to_string();
+                     my_defaults.prop_api_oauth = vec[1].to_string();
                  }
-                else if  vec[0].to_string() == my_Defaults.prop_user.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_user.to_string()
                 {
-                    my_Defaults.prop_user = vec[1].to_string();
+                    my_defaults.prop_user = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == my_Defaults.prop_panel_password.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_panel_password.to_string()
                 {
-                    my_Defaults.prop_panel_password = vec[1].to_string();
+                    my_defaults.prop_panel_password = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == my_Defaults.panel_standard_user.to_string()
+                else if  vec[0].to_string() == my_defaults.panel_standard_user.to_string()
                 {
-                    my_Defaults.panel_standard_user = vec[1].to_string();
+                    my_defaults.panel_standard_user = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == my_Defaults.panel_standard_password.to_string()
+                else if  vec[0].to_string() == my_defaults.panel_standard_password.to_string()
                 {
-                    my_Defaults.panel_standard_password = vec[1].to_string();
+                    my_defaults.panel_standard_password = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == my_Defaults.ouauth_prefix.to_string()
+                else if  vec[0].to_string() == my_defaults.ouauth_prefix.to_string()
                 {
-                    my_Defaults.ouauth_prefix = vec[1].to_string();
+                    my_defaults.ouauth_prefix = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == my_Defaults.prop_baseport.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_baseport.to_string()
                 {
-                    my_Defaults.prop_baseport = vec[1].to_string();
+                    my_defaults.prop_baseport = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == my_Defaults.prop_usehttps.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_usehttps.to_string()
                 {
-                    my_Defaults.prop_usehttps = vec[1].to_string();
+                    my_defaults.prop_usehttps = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == my_Defaults.prop_webenable.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_webenable.to_string()
                 {
-                    my_Defaults.prop_webenable = vec[1].to_string();
+                    my_defaults.prop_webenable = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == my_Defaults.prop_msglimit_30.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_msglimit_30.to_string()
                 {
-                    my_Defaults.prop_msglimit_30 = vec[1].to_string();
+                    my_defaults.prop_msglimit_30 = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == my_Defaults.prop_musicenable.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_musicenable.to_string()
                 {
-                    my_Defaults.prop_musicenable = vec[1].to_string();
+                    my_defaults.prop_musicenable = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == my_Defaults.prop_whisperlimit_60.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_whisperlimit_60.to_string()
                 {
-                    my_Defaults.prop_whisperlimit_60 = vec[1].to_string();
+                    my_defaults.prop_whisperlimit_60 = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == my_Defaults.prop_oauth.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_oauth.to_string()
                 {
-                    my_Defaults.prop_oauth = vec[1].to_string();
+                    my_defaults.prop_oauth = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == my_Defaults.prop_channel.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_channel.to_string()
                 {
-                    my_Defaults.prop_channel = vec[1].to_string();
+                    my_defaults.prop_channel = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == my_Defaults.prop_owner.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_owner.to_string()
                 {
-                    my_Defaults.prop_owner = vec[1].to_string();
+                    my_defaults.prop_owner = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == my_Defaults.prop_debugon.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_debugon.to_string()
                 {
-                    my_Defaults.prop_debugon = vec[1].to_string();
+                    my_defaults.prop_debugon = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == my_Defaults.prop_debuglog.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_debuglog.to_string()
                 {
-                    my_Defaults.prop_debuglog = vec[1].to_string();
+                    my_defaults.prop_debuglog = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == my_Defaults.prop_reloadscripts.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_reloadscripts.to_string()
                 {
-                    my_Defaults.prop_reloadscripts = vec[1].to_string();
+                    my_defaults.prop_reloadscripts = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == my_Defaults.prop_rhinodebugger.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_rhinodebugger.to_string()
                 {
-                    my_Defaults.prop_rhinodebugger = vec[1].to_string();
+                    my_defaults.prop_rhinodebugger = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == my_Defaults.prop_webauth.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_webauth.to_string()
                 {
-                    my_Defaults.prop_webauth = vec[1].to_string();
+                    my_defaults.prop_webauth = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == my_Defaults.prop_webauth_ro.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_webauth_ro.to_string()
                 {
-                    my_Defaults.prop_webauth_ro = vec[1].to_string();
+                    my_defaults.prop_webauth_ro = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == my_Defaults.prop_panel_user.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_panel_user.to_string()
                 {
-                    my_Defaults.prop_panel_user = vec[1].to_string();
+                    my_defaults.prop_panel_user = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == my_Defaults.prop_ytauth.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_ytauth.to_string()
                 {
-                    my_Defaults.prop_ytauth = vec[1].to_string();
+                    my_defaults.prop_ytauth = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == my_Defaults.prop_ytauth_ro.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_ytauth_ro.to_string()
                 {
-                    my_Defaults.prop_ytauth_ro = vec[1].to_string();
+                    my_defaults.prop_ytauth_ro = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == my_Defaults.prop_silentscriptsload.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_silentscriptsload.to_string()
                 {
                     myDefaults.prop_silentscriptsload = vec[1].to_string();
                 }
