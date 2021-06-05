@@ -232,7 +232,7 @@ impl ConfigurationManager
                 }
                 else if  vec[0].to_string() == my_defaults.prop_silentscriptsload.to_string()
                 {
-                    myDefaults.prop_silentscriptsload = vec[1].to_string();
+                    my_defaults.prop_silentscriptsload = vec[1].to_string();
                 }
 
             }
