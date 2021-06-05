@@ -242,7 +242,7 @@ impl ConfigurationManager
 
             // create config file
             let slice = &dateiname[..8];
-            fs::create_dir(slice);
+            fs::create_dir(slice).expect("Cannot create dir");
             let mut file = File::create(dateiname);
 
 
