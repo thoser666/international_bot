@@ -1,11 +1,10 @@
 name: ReleaseWorkflow
 
 on:
-  push:
+  create:
     tags:
       - 'v*'
-    branches:
-      - 'release/'
+    
 
 jobs:
   createSentryRelease:
