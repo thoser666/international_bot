@@ -255,7 +255,7 @@ impl ConfigurationManager
 
 
              }
-            fs::write(dateiname,config);
+            fs::write(dateiname,config).expect("Writing file failed !");
         }
 
 
