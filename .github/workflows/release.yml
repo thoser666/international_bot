@@ -1,0 +1,38 @@
+name: ReleaseWorkflow
+
+on:
+  push:
+    tags:
+      - '**'
+    branches:
+      - 'releases/**'
+
+
+jobs:
+  createSentryRelease:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Release
+        uses: docker://antonyurchenko/git-release:latest
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            DRAFT_RELEASE: "false"
+            PRE_RELEASE: "false"
+            CHANGELOG_FILE: "CHANGELOG.md"
+            ALLOW_EMPTY_CHANGELOG: "false"
+            ALLOW_TAG_PREFIX: "true"
+        with:
+            args: |
+                build/*-amd64.zip
+      - name: Checkout code
+        uses: actions/checkout@master
+      - name: Create a Sentry.io release
+        uses: tclindner/sentry-releases-action@v1.2.0
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: thoser666_org
+          SENTRY_PROJECT: thoser666_org
+        with:
+          tagName: ${{ github.ref }}
+          environment: qa
+
