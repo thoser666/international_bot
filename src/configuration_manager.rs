@@ -1,12 +1,9 @@
 use crate::caseless_properties::CaselessProperties;
 use std::fs::File;
 use std::io::{BufRead, BufReader};
-use std::io::Write;
 use std::fs;
 use std::collections::HashMap;
-use std::path::{PathBuf, Path};
-use std::io::prelude::*;
-use std::ops::Add;
+use std::path::{Path};
 
 #[derive(Default)]
 pub struct  ConfigurationManager
@@ -120,122 +117,122 @@ impl ConfigurationManager
         let result: HashMap<String, String> = HashMap::new();
         let mut config = String::new();     // configdaten
 
-        let fileExists = Path::new(dateiname).exists();
+        let file_exists = Path::new(dateiname).exists();
 
         //config file exists
-        if fileExists
+        if file_exists
         {
-            let mut file = File::open(dateiname).unwrap();
+            let file = File::open(dateiname).unwrap();
             let reader = BufReader::new(file);
 
             // doing configuration
-            let mut myDefaults = ConfigurationManager::default();
+            let mut my_defaults = ConfigurationManager::default();
 
 
             for line in reader.lines() {
-                let mut tmp = line.unwrap();
-                let mut prop = tmp.split(":");
-                let mut vec: Vec<&str> = prop.collect();
+                let tmp = line.unwrap();
+                let prop = tmp.split(":");
+                let vec: Vec<&str> = prop.collect();
 
-                 if vec[0].to_string() == myDefaults.prop_api_oauth.to_string()
+                 if vec[0].to_string() == my_defaults.prop_api_oauth.to_string()
                  {
-                     myDefaults.prop_api_oauth = vec[1].to_string();
+                     my_defaults.prop_api_oauth = vec[1].to_string();
                  }
-                else if  vec[0].to_string() == myDefaults.prop_user.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_user.to_string()
                 {
-                    myDefaults.prop_user = vec[1].to_string();
+                    my_defaults.prop_user = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == myDefaults.prop_panel_password.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_panel_password.to_string()
                 {
-                    myDefaults.prop_panel_password = vec[1].to_string();
+                    my_defaults.prop_panel_password = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == myDefaults.panel_standard_user.to_string()
+                else if  vec[0].to_string() == my_defaults.panel_standard_user.to_string()
                 {
-                    myDefaults.panel_standard_user = vec[1].to_string();
+                    my_defaults.panel_standard_user = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == myDefaults.panel_standard_password.to_string()
+                else if  vec[0].to_string() == my_defaults.panel_standard_password.to_string()
                 {
-                    myDefaults.panel_standard_password = vec[1].to_string();
+                    my_defaults.panel_standard_password = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == myDefaults.ouauth_prefix.to_string()
+                else if  vec[0].to_string() == my_defaults.ouauth_prefix.to_string()
                 {
-                    myDefaults.ouauth_prefix = vec[1].to_string();
+                    my_defaults.ouauth_prefix = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == myDefaults.prop_baseport.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_baseport.to_string()
                 {
-                    myDefaults.prop_baseport = vec[1].to_string();
+                    my_defaults.prop_baseport = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == myDefaults.prop_usehttps.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_usehttps.to_string()
                 {
-                    myDefaults.prop_usehttps = vec[1].to_string();
+                    my_defaults.prop_usehttps = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == myDefaults.prop_webenable.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_webenable.to_string()
                 {
-                    myDefaults.prop_webenable = vec[1].to_string();
+                    my_defaults.prop_webenable = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == myDefaults.prop_msglimit_30.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_msglimit_30.to_string()
                 {
-                    myDefaults.prop_msglimit_30 = vec[1].to_string();
+                    my_defaults.prop_msglimit_30 = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == myDefaults.prop_musicenable.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_musicenable.to_string()
                 {
-                    myDefaults.prop_musicenable = vec[1].to_string();
+                    my_defaults.prop_musicenable = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == myDefaults.prop_whisperlimit_60.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_whisperlimit_60.to_string()
                 {
-                    myDefaults.prop_whisperlimit_60 = vec[1].to_string();
+                    my_defaults.prop_whisperlimit_60 = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == myDefaults.prop_oauth.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_oauth.to_string()
                 {
-                    myDefaults.prop_oauth = vec[1].to_string();
+                    my_defaults.prop_oauth = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == myDefaults.prop_channel.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_channel.to_string()
                 {
-                    myDefaults.prop_channel = vec[1].to_string();
+                    my_defaults.prop_channel = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == myDefaults.prop_owner.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_owner.to_string()
                 {
-                    myDefaults.prop_owner = vec[1].to_string();
+                    my_defaults.prop_owner = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == myDefaults.prop_debugon.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_debugon.to_string()
                 {
-                    myDefaults.prop_debugon = vec[1].to_string();
+                    my_defaults.prop_debugon = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == myDefaults.prop_debuglog.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_debuglog.to_string()
                 {
-                    myDefaults.prop_debuglog = vec[1].to_string();
+                    my_defaults.prop_debuglog = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == myDefaults.prop_reloadscripts.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_reloadscripts.to_string()
                 {
-                    myDefaults.prop_reloadscripts = vec[1].to_string();
+                    my_defaults.prop_reloadscripts = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == myDefaults.prop_rhinodebugger.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_rhinodebugger.to_string()
                 {
-                    myDefaults.prop_rhinodebugger = vec[1].to_string();
+                    my_defaults.prop_rhinodebugger = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == myDefaults.prop_webauth.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_webauth.to_string()
                 {
-                    myDefaults.prop_webauth = vec[1].to_string();
+                    my_defaults.prop_webauth = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == myDefaults.prop_webauth_ro.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_webauth_ro.to_string()
                 {
-                    myDefaults.prop_webauth_ro = vec[1].to_string();
+                    my_defaults.prop_webauth_ro = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == myDefaults.prop_panel_user.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_panel_user.to_string()
                 {
-                    myDefaults.prop_panel_user = vec[1].to_string();
+                    my_defaults.prop_panel_user = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == myDefaults.prop_ytauth.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_ytauth.to_string()
                 {
-                    myDefaults.prop_ytauth = vec[1].to_string();
+                    my_defaults.prop_ytauth = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == myDefaults.prop_ytauth_ro.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_ytauth_ro.to_string()
                 {
-                    myDefaults.prop_ytauth_ro = vec[1].to_string();
+                    my_defaults.prop_ytauth_ro = vec[1].to_string();
                 }
-                else if  vec[0].to_string() == myDefaults.prop_silentscriptsload.to_string()
+                else if  vec[0].to_string() == my_defaults.prop_silentscriptsload.to_string()
                 {
-                    myDefaults.prop_silentscriptsload = vec[1].to_string();
+                    my_defaults.prop_silentscriptsload = vec[1].to_string();
                 }
 
             }
@@ -245,8 +242,8 @@ impl ConfigurationManager
 
             // create config file
             let slice = &dateiname[..8];
-            fs::create_dir(slice);
-            let mut file = File::create(dateiname);
+            fs::create_dir(slice).expect("Cannot create dir");
+            let file = File::create(dateiname);
 
 
              for (key, value) in conf.iter()
@@ -258,7 +255,7 @@ impl ConfigurationManager
 
 
              }
-            fs::write(dateiname,config);
+            fs::write(dateiname,config).expect("Writing file failed !");
         }
 
 
