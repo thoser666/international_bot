@@ -1,21 +1,47 @@
-//mod configuration_manager;
-//mod repoversion;
 
 mod repoversion;
 mod configuration_manager;
 mod caseless_properties;
 
-use std::env;
 use std::path::{PathBuf};
-use actix_web::{web, App, HttpRequest, HttpServer, Responder};
 use crate::configuration_manager::ConfigurationManager;
+use actix_files as fs;
+use actix_session::{CookieSession, Session};
+//use actix_utils::mpsc;
+use actix_web::http::{header, Method, StatusCode};
+use actix_web::{
+    error, get, guard, middleware, web, App, Error, HttpRequest, HttpResponse,
+    HttpServer, Result,
+};
+use std::{env, io};
+use actix_files::Files;
 
-
-async fn greet(req: HttpRequest) -> impl Responder {
-    let name = req.match_info().get("name").unwrap_or("World");
-    format!("Hello {}!", &name)
+/// favicon handler
+#[get("/favicon")]
+async fn favicon() -> Result<fs::NamedFile> {
+    Ok(fs::NamedFile::open("static/favicon.ico")?)
 }
 
+/// simple index handler
+#[get("/index")]
+async fn index(session: Session, req: HttpRequest) -> Result<HttpResponse> {
+    println!("{:?}", req);
+
+    // session
+    let mut counter = 1;
+    if let Some(count) = session.get::<i32>("counter")? {
+        println!("SESSION value: {}", count);
+        counter = count + 1;
+    }
+
+    // set counter to session
+    session.set("counter", counter)?;
+
+    // response
+    Ok(HttpResponse::build(StatusCode::OK)
+        .content_type("text/html; charset=utf-8")
+        .body(include_str!("./web/phantombot/resources/web/index.html")))
+}
 #[actix_web::main]
 async fn main() -> std::io::Result<()>
 {
@@ -73,12 +99,28 @@ async fn main() -> std::io::Result<()>
 
     HttpServer::new(|| {
         App::new()
-            .route("/", web::get().to(greet))
-            .route("/{name}", web::get().to(greet))
+            // Enable the logger.
+            .wrap(middleware::Logger::default())
+            // We allow the visitor to see an index of the images at `/images`.
+            .service(Files::new("/images", "static/images/").show_files_listing())
+            // Serve a tree of static files at the web root and specify the index file.
+            // Note that the root path should always be defined as the last item. The paths are
+            // resolved in the order they are defined. If this would be placed before the `/images`
+            // path then the service for the static images would never be reached.
+            .service(Files::new("/", "./static/root/").index_file("index.html"))
     })
-        .bind(("127.0.0.1", 26000))?
+        .bind("127.0.0.1:8080")?
         .run()
         .await
+
+    // HttpServer::new(|| {
+    //     App::new()
+    //         .route("/", web::get().to(index))
+    //         .route("/{name}", web::get().to(index))
+    // })
+    //     .bind(("127.0.0.1", 26000))?
+    //     .run()
+    //     .await
 
 
 }
