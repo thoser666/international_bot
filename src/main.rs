@@ -182,14 +182,7 @@ async fn main() -> std::io::Result<()>
         .run()
         .await
 
-    // HttpServer::new(|| {
-    //     App::new()
-    //         .route("/", web::get().to(index))
-    //         .route("/{name}", web::get().to(index))
-    // })
-    //     .bind(("127.0.0.1", 26000))?
-    //     .run()
-    //     .await
+
 
 
 }
