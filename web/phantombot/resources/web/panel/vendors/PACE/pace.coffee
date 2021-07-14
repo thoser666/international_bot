@@ -745,7 +745,7 @@ Pace.start = (_options) ->
 
 if typeof define is 'function' and define.amd
   # AMD
-  define ['pace'], -> Pace
+  define ['web/phantombot/resources/web/panel/vendors/PACE/pace'], -> Pace
 else if typeof exports is 'object'
   # CommonJS
   module.exports = Pace
