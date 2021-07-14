@@ -15,7 +15,7 @@ use actix_web::{
 };
 use std::{env, io};
 use actix_files::Files;
-use actix_utils::mpsc;
+//use actix_utils::mpsc;
 
 /// favicon handler
 #[get("/favicon")]
@@ -24,7 +24,7 @@ async fn favicon() -> Result<fs::NamedFile> {
 }
 
 /// simple index handler
-#[get("/welcome")]
+/*#[get("/welcome")]
 async fn welcome(session: Session, req: HttpRequest) -> Result<HttpResponse> {
     println!("{:?}", req);
 
@@ -43,14 +43,14 @@ async fn welcome(session: Session, req: HttpRequest) -> Result<HttpResponse> {
         .content_type("text/html; charset=utf-8")
         .body(include_str!("web/phantombot/resources/web/index.html")))
 }
-
+*/
 /// 404 handler
 async fn p404() -> Result<fs::NamedFile> {
     Ok(fs::NamedFile::open("static/404.html")?.set_status_code(StatusCode::NOT_FOUND))
 }
 
 /// response body
-async fn response_body(path: web::Path<String>) -> HttpResponse {
+/*async fn response_body(path: web::Path<String>) -> HttpResponse {
     let text = format!("Hello {}!", *path);
 
     let (tx, rx_body) = mpsc::channel();
@@ -58,9 +58,9 @@ async fn response_body(path: web::Path<String>) -> HttpResponse {
 
     HttpResponse::Ok().streaming(rx_body)
 }
-
+*/
 /// handler with path parameters like `/user/{name}/`
-async fn with_param(
+/*async fn with_param(
     req: HttpRequest,
     web::Path((name,)): web::Path<(String,)>,
 ) -> HttpResponse {
@@ -70,7 +70,7 @@ async fn with_param(
         .content_type("text/plain")
         .body(format!("Hello {}!", name))
 }
-
+*/
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()>
@@ -127,7 +127,7 @@ async fn main() -> std::io::Result<()>
     let config =  ConfigurationManager::new();
     let start_properties = config.get_configuration();
 
-    HttpServer::new(|| {
+/*    HttpServer::new(|| {
         App::new()
             // cookie session middleware
             .wrap(CookieSession::signed(&[0; 32]).secure(false))
@@ -177,6 +177,19 @@ async fn main() -> std::io::Result<()>
                             .to(HttpResponse::MethodNotAllowed),
                     ),
             )
+    })
+ */
+    HttpServer::new(|| {
+        App::new()
+            // Enable the logger.
+            .wrap(middleware::Logger::default())
+            // We allow the visitor to see an index of the images at `/images`.
+            .service(Files::new("/images", "static/images/").show_files_listing())
+            // Serve a tree of static files at the web root and specify the index file.
+            // Note that the root path should always be defined as the last item. The paths are
+            // resolved in the order they are defined. If this would be placed before the `/images`
+            // path then the service for the static images would never be reached.
+            .service(Files::new("/", "./static/root/").index_file("index.html"))
     })
         .bind("127.0.0.1:26000")?
         .run()
