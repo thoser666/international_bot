@@ -189,7 +189,7 @@ async fn main() -> std::io::Result<()>
             // Note that the root path should always be defined as the last item. The paths are
             // resolved in the order they are defined. If this would be placed before the `/images`
             // path then the service for the static images would never be reached.
-            .service(Files::new("/", "./static/root/").index_file("index.html"))
+            .service(Files::new("/", "./web/phantombot/resources/web/").index_file("index.html"))
     })
         .bind("127.0.0.1:26000")?
         .run()
