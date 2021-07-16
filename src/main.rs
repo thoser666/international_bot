@@ -16,6 +16,13 @@ use actix_web::{
 use std::{env, io};
 use actix_files::Files;
 
+
+/// for sentry
+#[get("/")]
+async fn failing(_req: HttpRequest) -> Result<String, Error> {
+    Err(io::Error::new(io::ErrorKind::Other, "An error happens here").into())
+}
+
 /// favicon handler
 #[get("/favicon")]
 async fn favicon() -> Result<fs::NamedFile> {
@@ -38,6 +45,7 @@ async fn main() -> std::io::Result<()>
 
     // Sentry will capture this
 //    panic!("Everything is on fire!");
+    std::env::set_var("RUST_BACKTRACE", "1");
 
 
 
@@ -89,6 +97,8 @@ async fn main() -> std::io::Result<()>
             .wrap(middleware::Logger::default())
             // We allow the visitor to see an index of the images at `/images`.
             .service(Files::new("/images", "static/images/").show_files_listing())
+            .wrap(sentry_actix::Sentry::new())
+            .service(failing)
             // Serve a tree of static files at the web root and specify the index file.
             // Note that the root path should always be defined as the last item. The paths are
             // resolved in the order they are defined. If this would be placed before the `/images`
