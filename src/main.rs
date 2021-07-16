@@ -38,7 +38,7 @@ async fn p404() -> Result<fs::NamedFile> {
 /// check 4 new version
 async fn check4NewInternationalBotVersion()
 {
-    println!("in check4NewInternationalBotVersion");
+    println!("in check4NewInternationalBotVersion Orig");
 }
 
 
