@@ -35,5 +35,6 @@ jobs:
           SENTRY_PROJECT: thoser666_org
         with:
           tagName: ${{ github.ref }}
+          releaseNamePrefix: InternationalBot-
           environment: qa
 
