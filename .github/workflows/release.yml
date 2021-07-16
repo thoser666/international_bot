@@ -5,7 +5,8 @@ on:
     tags:
       - '**'
     branches:
-      - 'releases/**'
+      # evtl funzt master vorher war 'release/**'
+      - 'master'
 
 
 jobs:
